@@ -5,6 +5,8 @@ My note:
 While I was doing it I found out that using several tables is kinda hard so View Table was created.
 I have ID's because at first it was Azure database and it had some problems with strings (later I found out that it was just some wierd option).
 Migrations worked flawlessly until I had to switch to local SQL Server. Then they broke - I wrote information how to fix them inside this file below.
+There are some things that I would love to make work differently. Unfortunately some changes had to be made after I thought I was done
+with Microservice while I was doing the Xamarin Project part.
 
 
 
