@@ -7,7 +7,7 @@ I have ID's because at first it was Azure database and it had some problems with
 Migrations worked flawlessly until I had to switch to local SQL Server. Then they broke - I wrote information how to fix them inside this file below.
 There are some things that I would love to make work differently. Unfortunately some changes had to be made after I thought I was done
 with Microservice while I was doing the Xamarin Project part.
-
+Also I had to use CONVEYOR in order to make my local database accessible over the internet.
 
 Brief overview over the files used within this solution:
 
