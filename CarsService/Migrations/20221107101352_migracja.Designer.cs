@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarsService.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220707133030_CreateCarDetailsView")]
-    partial class CreateCarDetailsView
+    [Migration("20221107101352_migracja")]
+    partial class migracja
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,15 +33,12 @@ namespace CarsService.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarID"), 1L, 1);
 
                     b.Property<string>("Brand")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Model")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RegNum")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CarID");
@@ -71,30 +68,46 @@ namespace CarsService.Migrations
 
                     b.HasKey("TechId");
 
-                    b.ToTable("Exams");
+                    b.ToTable("TechExam");
+                });
+
+            modelBuilder.Entity("CarsService.Database.Entity.User", b =>
+                {
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"), 1L, 1);
+
+                    b.Property<string>("Login")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserID");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CarsService.Database.Views.CarDetailsView", b =>
                 {
-                    b.Property<DateTime>("ActualDate")
+                    b.Property<DateTime?>("ActualDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Brand")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsWorking")
+                    b.Property<bool?>("IsWorking")
                         .HasColumnType("bit");
 
                     b.Property<string>("Model")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("NextDate")
+                    b.Property<DateTime?>("NextDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("RegNum")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.ToTable("CarDetailsView");

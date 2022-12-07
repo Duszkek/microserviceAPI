@@ -6,13 +6,20 @@ namespace CarsService.Database
 {
     public class DatabaseContext: DbContext
     {
-        public DbSet<Car> Cars { get; set; }
-        public DbSet<TechExam> Exams { get; set; }
-        public DbSet<CarDetailsView> CarDetailsView { get; set; }
+        #region Properties
+
+        public DbSet<Car>? Cars { get; set; }
+        public DbSet<TechExam>? Exams { get; set; }
+        public DbSet<User>? Users { get; set; }
+        public DbSet<CarDetailsView>? CarDetailsView { get; set; }
+
+        #endregion
+
+        #region Override
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=localhost;Database=CarsApp;Integrated Security=true;");
+            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\CarsApp;Database=CarsApp;Integrated Security=true;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -22,5 +29,7 @@ namespace CarsService.Database
                 cd.HasNoKey();
             });
         }
+
+        #endregion
     }
 }

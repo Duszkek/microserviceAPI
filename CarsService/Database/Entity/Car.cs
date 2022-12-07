@@ -9,17 +9,26 @@ namespace CarsService.Database.Entity
     [Table("Cars")]
     public class Car
     {
+        #region Properties
+
         [Key]
-        public int CarID { get; set; }
-        public string RegNum { get; set; }
-        public string Brand { get; set; }
-        public string Model { get; set; }
-        public Car(string regNum, string brand, string model)
+        public int Car_ID { get; private set; }
+        public string? RegNum { get; private set; }
+        public string? Brand { get; private set; }
+        public string? Model { get; private set; }
+
+        #endregion
+
+        #region Ctor
+
+        public Car(string? regNum, string? brand, string? model, int car_ID = 0)
         {
-            CarID = 0; //we don't use it like that so its okay. I could also just never set it up
+            Car_ID = car_ID; //we don't use it like that so its okay. I could also just never set it up
             RegNum=regNum;
             Brand=brand;
             Model=model;
         }
+
+        #endregion
     }
 }
